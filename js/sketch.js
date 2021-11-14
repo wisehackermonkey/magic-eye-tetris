@@ -20,7 +20,7 @@ function setup() {
 
 
 	canvas = createCanvas(totalWidth, totalHeight);
-	canvas.attribute('style','display: none;');
+// 	canvas.attribute('style','display: none;');
 
 	spawnNewPiece();
 
