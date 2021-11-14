@@ -19,7 +19,7 @@ function setup() {
 	magic = new Magic(totalWidth, totalHeight);
 
 
-	let canvas = createCanvas(totalWidth, totalHeight);
+	canvas = createCanvas(totalWidth, totalHeight);
 	canvas.attribute('style','display: none;');
 
 	spawnNewPiece();
@@ -187,12 +187,10 @@ function keyPressed() {
 		case 'y':
 			debug_mode= !debug_mode
 			if(debug_mode){
-			canvas.attribute('style','display: none;');
+				canvas.attribute('style','display: none;');
 			}else{
-							canvas.attribute('style','');
-
+				canvas.attribute('style','');
 			}
-			debug_mode= !debug_mode
 
 			break;
 
