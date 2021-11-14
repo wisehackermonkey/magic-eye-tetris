@@ -4,14 +4,16 @@ let ghostMode = true;
 const width = 10;
 const height = 22;
 let magic;
+let totalWidth;
+let totalHeight;
 let sideBarWidth = 100;
 
 function setup() {
 	
 	playfield = new Playfield(width, height);
 	
-	let totalWidth = playfield.cellSize * width + playfield.borderSize*2 +  2*sideBarWidth;
-	let totalHeight = playfield.cellSize * height + playfield.borderSize*2 + 2*sideBarWidth;
+	totalWidth = playfield.cellSize * width + playfield.borderSize*2 +  2*sideBarWidth;
+	totalHeight = playfield.cellSize * height + playfield.borderSize*2 + 2*sideBarWidth;
 	
 	magic = new Magic(totalWidth, totalHeight);
 	
@@ -50,7 +52,7 @@ function draw() {
 		fallingPiece.resetBuffer();
 		fallingPiece.moveDown();
 		
-		magic.redraw_magic_eye();
+		//magic.redraw_magic_eye();
 		if (!playfield.isValid(fallingPiece)) {
 			fallingPiece.moveUp();
 			spawnNewPiece();
@@ -120,66 +122,67 @@ function toggleGhost() {
 
 
 function keyPressed() {
-	magic.redraw_magic_eye();
 	// for alphabet keys
 	switch (key.toLowerCase()) {
-			
+		
 		case ' ':
 			hardDrop(fallingPiece, playfield);
 			spawnNewPiece();
 			break;
 			
-		case 'r':magic
+			case 'r':magic
 			break;
-		
 			
-		// Rotation
-		// --------
-		
-		case 'z':
-			fallingPiece.rotateCCW();
-			// if not valid, rotate back
-			if (!playfield.isValid(fallingPiece))
+			
+			// Rotation
+			// --------
+			
+			case 'z':
+				fallingPiece.rotateCCW();
+				// if not valid, rotate back
+				if (!playfield.isValid(fallingPiece))
 				fallingPiece.rotateCW();
-			break;
-			
-		case 'x':
-			fallingPiece.rotateCW();
-			// if not valid, rotate back
-			if (!playfield.isValid(fallingPiece))
-				fallingPiece.rotateCCW();
-			break;
-		
-			
-		// Testing
-		// -------
-		
-		case 'w':
-			fallingPiece.y--;
-			break;
-			
-		case 'n':
-			spawnNewPiece();
-			break;
-			
-	}
-	
-	// non-ASCII keys
-	switch (keyCode) {
-		// movement controls in html file
-		// to handle repeated movement
-			
-		case UP_ARROW:
-			fallingPiece.rotateCW();
-
-			// if not valid, rotate back
-			if (!playfield.isValid(fallingPiece))
-				fallingPiece.rotateCCW();
-
-			break;
-			
-	}
-
-
-
-}
+				break;
+				
+				case 'x':
+					fallingPiece.rotateCW();
+					// if not valid, rotate back
+					if (!playfield.isValid(fallingPiece))
+					fallingPiece.rotateCCW();
+					break;
+					
+					
+					// Testing
+					// -------
+					
+					case 'w':
+						fallingPiece.y--;
+						break;
+						
+						case 'n':
+							spawnNewPiece();
+							break;
+							
+						}
+						
+						// non-ASCII keys
+						switch (keyCode) {
+							// movement controls in html file
+							// to handle repeated movement
+							
+							case UP_ARROW:
+								fallingPiece.rotateCW();
+								
+								// if not valid, rotate back
+								if (!playfield.isValid(fallingPiece))
+								fallingPiece.rotateCCW();
+								
+								break;
+								
+							}
+							
+							
+							
+							magic.redraw_magic_eye();
+						}
+						

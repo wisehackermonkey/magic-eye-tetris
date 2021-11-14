@@ -104,7 +104,14 @@ class Playfield {
 		// offset the rectangle so that
 		// top and right borders stay in canvas
 		let offset = floor(bs / 2)
+		//play area
 		rect(offset + sideBarWidth, offset + sideBarWidth, cs * this.cols + bs - 1, cs * this.rows + bs - 1)
+		// small border
+		push();
+		fill('white');
+		noStroke();
+		rect(0, cs * this.rows + bs + 3 * (this.cellSize + this.borderSize) - 2 * offset -1, totalWidth, cs * this.rows + bs + 50)
+		pop();
 		
 		
 		//===========================
@@ -135,7 +142,6 @@ class Playfield {
 		//===========================
 		// End of cells loop
 		//===========================
-
 		
 	} // end of show()
 
