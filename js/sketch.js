@@ -8,7 +8,7 @@ let totalWidth;
 let totalHeight;
 let sideBarWidth = 100;
 let newFrameReady = false;
-
+let canvas 
 function setup() {
 
 	playfield = new Playfield(width, height);
@@ -20,7 +20,7 @@ function setup() {
 
 
 	let canvas = createCanvas(totalWidth, totalHeight);
-	//canvas.attribute('style','display: none;');
+	canvas.attribute('style','display: none;');
 
 	spawnNewPiece();
 
@@ -145,7 +145,7 @@ function toggleGhost() {
 	ghostMode = !ghostMode;
 }
 
-
+let debug_mode = false
 function keyPressed() {
 	// for alphabet keys
 	switch (key.toLowerCase()) {
@@ -183,6 +183,17 @@ function keyPressed() {
 
 		case 'n':
 			spawnNewPiece();
+			break;
+		case 'y':
+			debug_mode= !debug_mode
+			if(debug_mode){
+			canvas.attribute('style','display: none;');
+			}else{
+							canvas.attribute('style','');
+
+			}
+			debug_mode= !debug_mode
+
 			break;
 
 	}
