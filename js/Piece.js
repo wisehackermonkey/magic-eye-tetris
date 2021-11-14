@@ -13,7 +13,7 @@ class Piece {
 		// position of top-left piece relative to playfield
 		this.x = x === undefined ? floor((playfield.cols - this.size) / 2) : x;
 		this.y = y || 0;
-		
+
 		// gravity
 		this.dropInterval = 1000 // in ms
 		this.dropBuffer = 0; // time since last drop
@@ -21,17 +21,17 @@ class Piece {
 		// whether this is a ghost piece
 		this.isghost = false;
 	}
-	
-	
+
+
 	update(time) {
 		this.dropBuffer += time;
 	}
-	
 
-	timeToFall() {    
+
+	timeToFall() {
 		return this.dropBuffer > this.dropInterval
 	}
-	
+
 	resetBuffer() {
 		this.dropBuffer = 0;
 	}
@@ -42,9 +42,9 @@ class Piece {
 		this.cells = piece.cells
 	}
 
-	
+
 	show() {
-		
+
 		// for each non-null cell in this piece, fill in
 		// the specified color and draw the rectangle
 		for (let row = 0; row < this.size; row++) {
@@ -79,8 +79,8 @@ class Piece {
 	moveUp() {
 		this.y--;
 	}
-	
-	
+
+
 
 	//================================
 	// Rotate functions
@@ -137,45 +137,45 @@ let types = {
 
 
 	J: [
-		['#FFF',  null ,  null ],
+		['#FFF', null, null],
 		['#FFF', '#FFF', '#FFF'],
-		[ null ,  null ,  null ]
+		[null, null, null]
 	],
 
 
 	L: [
-		[ null ,  null , '#FFF'],
+		[null, null, '#FFF'],
 		['#FFF', '#FFF', '#FFF'],
-		[ null ,  null ,  null ]
+		[null, null, null]
 	],
 
 
 	S: [
-		[ null , '#FFF', '#FFF'],
-		['#FFF', '#FFF',  null ],
-		[ null ,  null ,  null ]
+		[null, '#FFF', '#FFF'],
+		['#FFF', '#FFF', null],
+		[null, null, null]
 	],
 
 
 	Z: [
-		['#FFF', '#FFF',  null ],
-		[ null , '#FFF', '#FFF'],
-		[ null ,  null ,  null ]
+		['#FFF', '#FFF', null],
+		[null, '#FFF', '#FFF'],
+		[null, null, null]
 	],
 
 
 	T: [
-		[ null , '#FFF',  null ],
+		[null, '#FFF', null],
 		['#FFF', '#FFF', '#FFF'],
-		[ null ,  null ,  null ]
+		[null, null, null]
 	],
 
 
 	I: [
-		[ null ,  null ,  null ,  null ],
+		[null, null, null, null],
 		['#FFF', '#FFF', '#FFF', '#FFF'],
-		[ null ,  null ,  null ,  null ],
-		[ null ,  null ,  null ,  null ],
+		[null, null, null, null],
+		[null, null, null, null],
 	]
 
 }
