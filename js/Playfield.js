@@ -2,8 +2,8 @@ class Playfield {
 
 	constructor(w, h) {
 		// colors
-		this.foreground = [255];
-		this.background = [255];
+		this.foreground = [0];
+		this.background = [0];
 		
 		// dimensions and grid
 		this.cols = w;
@@ -11,7 +11,7 @@ class Playfield {
 		this.grid = [];
 		this.resetGrid();
 		
-		let scale = 2;
+		let scale = 1.5;
 		// drawing sizes
 		this.cellSize = Math.floor(scale*21);
 		this.borderSize = Math.floor(scale*3);
@@ -104,7 +104,7 @@ class Playfield {
 		// offset the rectangle so that
 		// top and right borders stay in canvas
 		let offset = floor(bs / 2)
-		rect(offset, offset, cs * this.cols + bs - 1, cs * this.rows + bs - 1)
+		rect(offset + sideBarWidth, offset + sideBarWidth, cs * this.cols + bs - 1, cs * this.rows + bs - 1)
 		
 		
 		//===========================
@@ -128,7 +128,7 @@ class Playfield {
 				fill(this.grid[row][col]);
 				
 				noStroke();
-				rect(cs * col + offset, cs * row + offset, cs - 1, cs - 1);
+				rect(cs * col + offset + sideBarWidth, cs * row + offset + sideBarWidth, cs, cs);
 			}
 		}
 		

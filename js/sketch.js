@@ -4,19 +4,20 @@ let ghostMode = true;
 const width = 10;
 const height = 22;
 let magic;
+let sideBarWidth = 100;
 
 function setup() {
 	
 	playfield = new Playfield(width, height);
 	
-	let totalWidth = playfield.cellSize * width + playfield.borderSize*2;
-	let totalHeight = playfield.cellSize * height + playfield.borderSize*2;
+	let totalWidth = playfield.cellSize * width + playfield.borderSize*2 +  2*sideBarWidth;
+	let totalHeight = playfield.cellSize * height + playfield.borderSize*2 + 2*sideBarWidth;
 	
 	magic = new Magic(totalWidth, totalHeight);
 	
 	
 	let canvas = createCanvas(totalWidth, totalHeight);
-	canvas.attribute('style','display: none;');
+	//canvas.attribute('style','display: none;');
 
 	spawnNewPiece();
 
@@ -71,7 +72,7 @@ function draw() {
 	// Draw
 	//============================
 	
-	background(251);
+	background(150);
 	
 	playfield.show();
 	if (ghostMode) ghostPiece.show();

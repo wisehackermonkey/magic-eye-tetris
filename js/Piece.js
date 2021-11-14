@@ -57,8 +57,8 @@ class Piece {
 					let cs = this.cellSize;
 					let off = this.offset;
 
-					fill(this.isghost ? '#FFF' : this.cells[row][col])
-					rect(off + cs * x, off + cs * y, cs-1, cs-1);
+					fill(this.isghost ? '#888' : this.cells[row][col])
+					rect(off + cs * x + sideBarWidth, off + cs * y + sideBarWidth, cs, cs);
 				}
 
 			}
@@ -131,49 +131,49 @@ class Piece {
 let types = {
 
 	O: [
-		['#000', '#000'],
-		['#000', '#000']
+		['#FFF', '#FFF'],
+		['#FFF', '#FFF']
 	],
 
 
 	J: [
-		['#000',  null ,  null ],
-		['#000', '#000', '#000'],
+		['#FFF',  null ,  null ],
+		['#FFF', '#FFF', '#FFF'],
 		[ null ,  null ,  null ]
 	],
 
 
 	L: [
-		[ null ,  null , '#000'],
-		['#000', '#000', '#000'],
+		[ null ,  null , '#FFF'],
+		['#FFF', '#FFF', '#FFF'],
 		[ null ,  null ,  null ]
 	],
 
 
 	S: [
-		[ null , '#000', '#000'],
-		['#000', '#000',  null ],
+		[ null , '#FFF', '#FFF'],
+		['#FFF', '#FFF',  null ],
 		[ null ,  null ,  null ]
 	],
 
 
 	Z: [
-		['#000', '#000',  null ],
-		[ null , '#000', '#000'],
+		['#FFF', '#FFF',  null ],
+		[ null , '#FFF', '#FFF'],
 		[ null ,  null ,  null ]
 	],
 
 
 	T: [
-		[ null , '#000',  null ],
-		['#000', '#000', '#000'],
+		[ null , '#FFF',  null ],
+		['#FFF', '#FFF', '#FFF'],
 		[ null ,  null ,  null ]
 	],
 
 
 	I: [
 		[ null ,  null ,  null ,  null ],
-		['#000', '#000', '#000', '#000'],
+		['#FFF', '#FFF', '#FFF', '#FFF'],
 		[ null ,  null ,  null ,  null ],
 		[ null ,  null ,  null ,  null ],
 	]
