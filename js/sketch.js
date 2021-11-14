@@ -7,6 +7,7 @@ let magic;
 let totalWidth;
 let totalHeight;
 let sideBarWidth = 100;
+let newFrameReady = false;
 
 function setup() {
 
@@ -57,6 +58,7 @@ function draw() {
 			spawnNewPiece();
 			
 		}
+		redraw();
 		magic.redraw_magic_eye();
 	}
 
@@ -68,22 +70,45 @@ function draw() {
 	hardDrop(ghostPiece, playfield);
 
 
-	playfield.clearLines();
-
-	//============================
-	// Draw
-	//============================
-
+	playfield.clearLines();let setGradient = (x, y, w, h, c1, c2, axis) => {
+		push()
+		noFill();
+	  
+		if (axis === "Y_AXIS") {
+		  // Top to bottom gradient
+		  for (let i = y; i <= y + h; i++) {
+			let inter = map(i, y, y + h, 0, 1);
+			let c = lerpColor(c1, c2, inter);
+			stroke(c);
+			line(x, i, x + w, i);
+		  }
+		} else if (axis === "X_AXIS") {
+		  // Left to right gradient
+		  for (let i = x; i <= x + w; i++) {
+			let inter = map(i, x, x + w, 0, 1);
+			let c = lerpColor(c1, c2, inter);
+			stroke(c);
+			line(i, y, i, y + h);
+		  }
+		}
+		pop()
+	  }
+	  
 	background(150);
 
 	playfield.show();
 	if (ghostMode) ghostPiece.show();
 	fallingPiece.show();
 
+
+	if (newFrameReady == true)
+	{
+		//magic.redraw_magic_eye();
+		newFrameReady = false;
+	}
 	//magic.redraw_magic_eye();
 
 }
-
 
 function spawnNewPiece() {
 	if (fallingPiece) {
@@ -152,10 +177,7 @@ function keyPressed() {
 			break;
 
 
-		// Testing
-		// -------
-
-		case 'w':
+		// TestinghardDrop
 			fallingPiece.y--;
 			break;
 
@@ -181,7 +203,6 @@ function keyPressed() {
 
 	}
 
-
-
+	redraw();
 	magic.redraw_magic_eye();
 }

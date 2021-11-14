@@ -8,9 +8,10 @@ document.addEventListener('keydown', event => {
       // Down arrow
       case 40:
       	fallingPiece.moveDown();
-        if (!playfield.isValid(fallingPiece))
+        if (!playfield.isValid(fallingPiece)){
           fallingPiece.moveUp()
-        else
+       
+        }else
           fallingPiece.resetBuffer()
         break;
         
@@ -28,5 +29,6 @@ document.addEventListener('keydown', event => {
           fallingPiece.moveLeft()
         break;         
     }
-        
+    //newFrameReady = true;
+    magic.redraw_magic_eye();
 });

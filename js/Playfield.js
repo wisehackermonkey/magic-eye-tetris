@@ -20,6 +20,30 @@ class Playfield {
 		this.gridlines = true;
 	}
 
+	setGradient = (x, y, w, h, c1, c2, axis) => {
+		push()
+		noFill();
+
+		if (axis === "Y_AXIS") {
+			// Top to bottom gradient
+			for (let i = y; i <= y + h; i++) {
+				let inter = map(i, y, y + h, 0, 1);
+				let c = lerpColor(c1, c2, inter);
+				stroke(c);
+				line(x, i, x + w, i);
+			}
+		} else if (axis === "X_AXIS") {
+			// Left to right gradient
+			for (let i = x; i <= x + w; i++) {
+				let inter = map(i, x, x + w, 0, 1);
+				let c = lerpColor(c1, c2, inter);
+				stroke(c);
+				line(i, y, i, y + h);
+			}
+		}
+		pop()
+	}
+
 	addToGrid(piece) {
 
 		for (let row = 0; row < piece.size; row++) {
@@ -110,7 +134,7 @@ class Playfield {
 		push();
 		fill('white');
 		noStroke();
-		rect(0, cs * this.rows + bs + 3 * (this.cellSize + this.borderSize) - 2 * offset - 1, totalWidth, cs * this.rows + bs + 50)
+		this.setGradient(0, cs * this.rows + bs + 3 * (this.cellSize + this.borderSize) - 2 * offset - 1, totalWidth, cs * this.rows + bs + 50, color(255, 255, 255), color(0, 0, 0), "Y_AXIS")
 		pop();
 
 
